@@ -3,21 +3,17 @@ import java.util.Scanner;
 
 class Main{
     public static void main(String[] args) {
-        System.out.println("Desafio 03");
+        System.out.println("Desafio 04");
         Scanner input = new Scanner(System.in);
-        int somaPar = 0;
-        int somaImpar = 0;
-        for (int i = 0; i <= 100 ; i++) {
-            if(i % 2 == 0 ){
-                somaPar += i;
-            }else {
-                somaImpar += i;
-            }
+        int fatorial = 1;
+
+        System.out.println("Digite um número para saber seu fatorial: ");
+        int number = Integer.parseInt(input.nextLine());
+
+        for (int i = number; i >= 1 ; i--) {
+            fatorial = fatorial * i;
         }
 
-        System.out.println("A soma dos numeros pares é: " + somaPar);
-        System.out.println("Lista de numeros impares: " + somaImpar);
-        System.out.println("A diferença de valores é: " + (somaPar - somaImpar));
-        input.close();
+        System.out.println("Fatorial de " + number + " = " + fatorial);
     }
 }
