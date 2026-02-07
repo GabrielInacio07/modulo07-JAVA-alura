@@ -1,51 +1,30 @@
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 class Main{
     public static void main(String[] args) {
-        System.out.println("Desafio 05");
+        System.out.println("Desafio 06");
         Scanner input = new Scanner(System.in);
-        ArrayList<Integer> arrayNumbers = new ArrayList<>();
 
-        int opcao = -1;
+        String password = "teste123";
+        int tentativas = 3;
 
-        while (opcao != 0){
-            System.out.println("Digite 1 - Para adicionar numero no ARRAY");
-            System.out.println("Digite 0 - Para Sair");
+        while (tentativas > 0) {
+            System.out.println("Digite sua senha:");
+            String senha = input.nextLine();
 
-            opcao = Integer.parseInt(input.nextLine());
-
-            if (opcao == 1){
-                try {
-                    System.out.println("Digite um numero");
-                    int number = Integer.parseInt(input.nextLine());
-                    arrayNumbers.add(number);
-                    System.out.println("Numero adicionado com sucesso!");
-                }catch (NumberFormatException  error){
-                    System.out.println("Valor Inválido. Digite apenas números! " + error.getMessage());
-                }
-
-            }else if(opcao == 0){
-                System.out.println("Encerrando operação...");
+            if (senha.equals(password)) {
+                System.out.println("Senha Correta! Acesso concedido!");
                 break;
-            }else{
-                throw new myException("Opção Inválida!!!");
+            } else {
+                tentativas--;
+                System.out.println("Senha incorreta! Você tem " + tentativas + " tentativas restantes.");
+            }
+
+            if (tentativas == 0) {
+                System.out.println("Tentativas esgotadas! CONTA BLOQUEADA.");
             }
         }
 
-        if (arrayNumbers.isEmpty()) {
-            System.out.println("A lista está vazia. Nenhum número para comparar.");
-        } else {
-            int maiorNumero = arrayNumbers.get(0);
-
-            for (int item : arrayNumbers) {
-                if (item > maiorNumero) {
-                    maiorNumero = item;
-                }
-            }
-            System.out.println("O maior número do Array é: " + maiorNumero);
-        }
 
         input.close();
     }
