@@ -2,28 +2,25 @@ import java.util.Scanner;
 
 class Main{
     public static void main(String[] args) {
-        System.out.println("Desafio 06");
+        System.out.println("Desafio 07");
         Scanner input = new Scanner(System.in);
 
-        String password = "teste123";
-        int tentativas = 3;
+        while (true) {
+            System.out.println("Digite um nome para cadastrar:");
+            String nome = input.nextLine().trim();
 
-        while (tentativas > 0) {
-            System.out.println("Digite sua senha:");
-            String senha = input.nextLine();
-
-            if (senha.equals(password)) {
-                System.out.println("Senha Correta! Acesso concedido!");
-                break;
+            if (nome.isEmpty()) {
+                System.out.println("Inválido! Nome não pode ser vazio.");
+            } else if (nome.length() < 3) {
+                System.out.println("Nome precisa ter pelo menos 3 caracteres.");
             } else {
-                tentativas--;
-                System.out.println("Senha incorreta! Você tem " + tentativas + " tentativas restantes.");
-            }
-
-            if (tentativas == 0) {
-                System.out.println("Tentativas esgotadas! CONTA BLOQUEADA.");
+                System.out.println("Nome cadastrado com sucesso!");
+                System.out.println(nome);
+                break;
             }
         }
+
+        input.close();
 
 
         input.close();
